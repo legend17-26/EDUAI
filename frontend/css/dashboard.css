@@ -1,0 +1,102 @@
+/* ==========================================
+   EDUPATH AI - DASHBOARD & TOOLS STYLING
+   ========================================== */
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 73px);
+}
+
+.sidebar {
+  background: rgba(15, 23, 42, 0.4);
+  border-right: 1px solid var(--border-glass);
+  padding: 2rem 1rem;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.sidebar-item:hover, .sidebar-item.active {
+  background: var(--bg-glass-strong);
+  color: var(--text-main);
+}
+
+.dashboard-main {
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+/* Stats Cards */
+.stat-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 0.25rem;
+  background: var(--gradient-primary);
+   background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* AI Assistant Drawer / Floating Chat */
+.ai-chat-box {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background: var(--primary);
+  color: #fff;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-bubble.ai {
+  align-self: flex-start;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  border-bottom-left-radius: 2px;
+}

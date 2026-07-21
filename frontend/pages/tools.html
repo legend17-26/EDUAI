@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduPath AI - Student Toolkit</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+  <link rel="stylesheet" href="../assets/css/layout.css"/>
+  <link rel="stylesheet" href="../assets/css/components.css"/>
+  <link rel="stylesheet" href="../assets/css/dashboard.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <h1 style="margin-bottom: 2rem;">Student Productivity Toolkit</h1>
+
+    <div class="grid grid-cols-2 gap-lg">
+      <!-- Gemini Assistant Box -->
+      <div>
+        <h3>AI Assistant</h3>
+        <div id="aiChatBox" class="ai-chat-box">
+          <div class="chat-messages"></div>
+          <div class="flex gap-sm" style="padding: 1rem; border-top: 1px solid var(--border-glass);">
+            <input type="text" class="search-input" style="padding: 0.5rem 1rem;" placeholder="Ask Gemini..." />
+            <button class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pomodoro Box -->
+      <div>
+        <h3>Pomodoro Timer</h3>
+        <div class="card-glass" style="text-align: center; padding: 3rem 1rem;">
+          <div id="pomoDisplay" style="font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem;">25:00</div>
+          <div class="flex justify-center gap-sm">
+            <button id="pomoStart" class="btn btn-primary">Start</button>
+            <button id="pomoPause" class="btn btn-secondary">Pause</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { AIAssistant } from '../assets/js/features/aiAssistant.js';
+    import { PomodoroTimer } from '../assets/js/features/pomodoro.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new AIAssistant('aiChatBox');
+      const timer = new PomodoroTimer('pomoDisplay');
+      document.getElementById('pomoStart').addEventListener('click', () => timer.start());
+      document.getElementById('pomoPause').addEventListener('click', () => timer.pause());
+    });
+  </script>
+</body>
+</html>

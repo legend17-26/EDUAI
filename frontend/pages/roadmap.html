@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduPath AI - Roadmap Viewer</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+  <link rel="stylesheet" href="../assets/css/layout.css"/>
+  <link rel="stylesheet" href="../assets/css/components.css"/>
+</head>
+<body>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+    <div id="roadmapView"></div>
+  </div>
+
+  <script type="module">
+    import { RoadmapRenderer } from '../assets/js/features/roadmap.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q') || 'Artificial Intelligence';
+      const renderer = new RoadmapRenderer('roadmapView');
+      renderer.loadAndRender(query);
+    });
+  </script>
+</body>
+</html>
