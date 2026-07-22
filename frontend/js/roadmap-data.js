@@ -25,7 +25,8 @@ const domainCategories = {
         ],
         companies: [
           { name: "Google", desc: "Global technology leader in search, AI research (DeepMind), and cloud computing." },
-          { name: "OpenAI", desc: "AI research organization behind revolutionary models like GPT-4, DALL-E, and Sora." }
+          { name: "OpenAI", desc: "AI research organization behind revolutionary models like GPT-4, DALL-E, and Sora." },
+          { name: "TCS", desc: "organization behind revolutionary service based companies " }
         ],
         skills: [
           { name: "Python", desc: "The primary programming language for artificial intelligence and data science." },
