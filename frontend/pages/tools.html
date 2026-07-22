@@ -1,55 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EduPath AI - Student Toolkit</title>
-  <link rel="stylesheet" href="../assets/css/main.css"/>
-  <link rel="stylesheet" href="../assets/css/layout.css"/>
-  <link rel="stylesheet" href="../assets/css/components.css"/>
-  <link rel="stylesheet" href="../assets/css/dashboard.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPath AI — AI Assistant</title>
+  
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+
+  <style>
+    body {
+      background-color: #0b0f19;
+      color: #fff;
+      font-family: inherit;
+      margin: 0;
+      padding: 20px;
+    }
+    .assistant-wrapper {
+      max-width: 900px;
+      margin: 30px auto;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .header-row h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    .ai-assistant-card {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    .assistant-card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-weight: 600;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .ai-messages-container {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .chat-bubble {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .bubble-ai {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .bubble-user {
+      background: #6366f1;
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .ai-input-wrapper {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      gap: 10px;
+    }
+    .ai-input-wrapper input {
+      flex: 1;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .ai-input-wrapper input:focus {
+      border-color: #6366f1;
+    }
+    .ai-input-wrapper button {
+      padding: 0 20px;
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
-    <h1 style="margin-bottom: 2rem;">Student Productivity Toolkit</h1>
 
-    <div class="grid grid-cols-2 gap-lg">
-      <!-- Gemini Assistant Box -->
-      <div>
-        <h3>AI Assistant</h3>
-        <div id="aiChatBox" class="ai-chat-box">
-          <div class="chat-messages"></div>
-          <div class="flex gap-sm" style="padding: 1rem; border-top: 1px solid var(--border-glass);">
-            <input type="text" class="search-input" style="padding: 0.5rem 1rem;" placeholder="Ask Gemini..." />
-            <button class="btn btn-primary">Send</button>
-          </div>
+  <div class="assistant-wrapper">
+    <div class="header-row">
+      <h1>AI Assistant</h1>
+    </div>
+
+    <div class="ai-assistant-card">
+      <div class="assistant-card-header">Gemini Knowledge Engine</div>
+      <div id="aiMessages" class="ai-messages-container">
+        <div class="chat-bubble bubble-ai">
+          Hello! I am your EduPath Gemini Assistant. Ask me anything about the website, courses, roadmaps, or resources!
         </div>
       </div>
-
-      <!-- Pomodoro Box -->
-      <div>
-        <h3>Pomodoro Timer</h3>
-        <div class="card-glass" style="text-align: center; padding: 3rem 1rem;">
-          <div id="pomoDisplay" style="font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem;">25:00</div>
-          <div class="flex justify-center gap-sm">
-            <button id="pomoStart" class="btn btn-primary">Start</button>
-            <button id="pomoPause" class="btn btn-secondary">Pause</button>
-          </div>
-        </div>
+      <div class="ai-input-wrapper">
+        <input type="text" id="aiInput" placeholder="Ask Gemini..." autocomplete="off">
+        <button id="aiSendBtn">Send</button>
       </div>
     </div>
   </div>
 
-  <script type="module">
-    import { AIAssistant } from '../assets/js/features/aiAssistant.js';
-    import { PomodoroTimer } from '../assets/js/features/pomodoro.js';
+  <script src="../js/roadmap-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
 
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-      new AIAssistant('aiChatBox');
-      const timer = new PomodoroTimer('pomoDisplay');
-      document.getElementById('pomoStart').addEventListener('click', () => timer.start());
-      document.getElementById('pomoPause').addEventListener('click', () => timer.pause());
+      const inputField = document.getElementById('aiInput');
+      const sendBtn = document.getElementById('aiSendBtn');
+      const messagesContainer = document.getElementById('aiMessages');
+
+      const websiteKnowledgeBase = [
+        {
+          keywords: ['about website', 'what is edupath', 'tell me about your website', 'platform'],
+          response: "EduPath AI is your universal education & career platform featuring structured career roadmaps, domain learning paths, tailored academic courses, examination question guides, and productivity modules."
+        },
+        {
+          keywords: ['roadmap', 'career path', 'domain'],
+          response: "Our website offers interactive career roadmaps and domain paths designed to guide you step-by-step through engineering and technical disciplines."
+        },
+        {
+          keywords: ['course', 'subject', 'module', 'syllabus', 'exam', 'notes'],
+          response: "Inside our courses section, you will find module-specific study materials and practice questions structured for standard university exam formats (5-mark, 7-mark, and 10-mark structures)."
+        }
+      ];
+
+      function handleUserQuery() {
+        const query = inputField.value.trim();
+        if (!query) return;
+
+        appendBubble(query, 'bubble-user');
+        inputField.value = '';
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        setTimeout(() => {
+          const lowerQuery = query.toLowerCase();
+          let matchedResponse = "EduPath AI provides complete support for your academic tracking, roadmaps, courses, and resource exploration. Feel free to ask about any specific section!";
+
+          for (const item of websiteKnowledgeBase) {
+            if (item.keywords.some(kw => lowerQuery.includes(kw))) {
+              matchedResponse = item.response;
+              break;
+            }
+          }
+
+          appendBubble(matchedResponse, 'bubble-ai');
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }, 200);
+      }
+
+      function appendBubble(text, className) {
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${className}`;
+        bubble.textContent = text;
+        messagesContainer.appendChild(bubble);
+      }
+
+      sendBtn.addEventListener('click', handleUserQuery);
+      inputField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleUserQuery();
+      });
     });
   </script>
 </body>
