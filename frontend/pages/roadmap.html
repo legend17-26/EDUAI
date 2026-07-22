@@ -1,25 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EduPath AI - Roadmap Viewer</title>
-  <link rel="stylesheet" href="../assets/css/main.css"/>
-  <link rel="stylesheet" href="../assets/css/layout.css"/>
-  <link rel="stylesheet" href="../assets/css/components.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPath AI — Detailed Roadmap Explorer</title>
+  
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    .selection-heading {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #818cf8;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .card-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .card-box:hover, .card-box.active {
+      border-color: #6366f1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);
+      background: rgba(99, 102, 241, 0.08);
+    }
+
+    .clickable-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .clickable-badge:hover {
+      background: rgba(99, 102, 241, 0.25);
+      border-color: #818cf8;
+      color: #fff !important;
+      transform: scale(1.03);
+    }
+
+    .roadmap-section {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .meta-pill {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+
+    .phase-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid #6366f1;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
-<body>
-  <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
-    <div id="roadmapView"></div>
+<body class="auth-body">
+
+  <div class="background-container">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
   </div>
 
-  <script type="module">
-    import { RoadmapRenderer } from '../assets/js/features/roadmap.js';
+  <main class="auth-wrapper" style="max-width: 1200px; padding: 40px 20px;">
+    
+    <div style="text-align: center; margin-bottom: 36px;">
+      <span class="badge badge-hero">Interactive Career Roadmap Explorer</span>
+      <h1 style="font-size: 2.2rem; margin-top: 8px;">Select a Domain & Click Any Option For Deep Details</h1>
+    </div>
+
+    <!-- STEP 1: Main Category -->
+    <div class="selection-heading">1. Select Main Field</div>
+    <div class="grid-container" id="categoryGrid"></div>
+
+    <!-- STEP 2: Sub-domains -->
+    <div id="subDomainContainer" style="display: none;">
+      <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 28px 0;" />
+      <div class="selection-heading" id="subDomainHeading">2. Select Specialization</div>
+      <div class="grid-container" id="subDomainGrid"></div>
+    </div>
+
+    <!-- STEP 3: Full Detailed View -->
+    <div id="roadmapDisplay" style="display: none;">
+      <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 32px 0;" />
+      
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <h2 id="activeDomainTitle" style="font-size: 2rem; color: #fff;"></h2>
+          <p id="activeDomainOverview" style="color: #94a3b8; max-width: 750px; margin-top: 6px; line-height: 1.5;"></p>
+          <div style="display: flex; gap: 12px; margin-top: 12px;">
+            <span class="meta-pill" id="salaryPill"></span>
+            <span class="meta-pill" id="durationPill" style="background: rgba(52,211,153,0.15); color: #34d399; border-color: rgba(52,211,153,0.3);"></span>
+          </div>
+        </div>
+        <a href="dashboard.html" class="btn btn-primary" style="padding: 12px 24px; text-decoration: none;">Lock In & Go To Dashboard &rarr;</a>
+      </div>
+
+      <!-- Roadmap Execution Timeline -->
+      <div class="roadmap-section">
+        <h3 style="color: #fff; margin-bottom: 16px;">🗺️ Step-by-Step Learning Timeline</h3>
+        <div id="phasesContainer"></div>
+      </div>
+
+      <!-- Interactive Grid Options -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+        
+        <div class="roadmap-section">
+          <h4 style="color: #818cf8; margin-bottom: 12px;">💼 Career Roles (Click for info)</h4>
+          <div id="rolesList"></div>
+        </div>
+
+        <div class="roadmap-section">
+          <h4 style="color: #34d399; margin-bottom: 12px;">🏢 Top Hiring Companies</h4>
+          <div id="companiesList"></div>
+        </div>
+
+        <div class="roadmap-section">
+          <h4 style="color: #f472b6; margin-bottom: 12px;">⚡ Key Skills (Click for info)</h4>
+          <div id="skillsList"></div>
+        </div>
+
+        <div class="roadmap-section">
+          <h4 style="color: #fbbf24; margin-bottom: 12px;">🏆 Recognized Certifications</h4>
+          <div id="certsList"></div>
+        </div>
+
+        <div class="roadmap-section">
+          <h4 style="color: #38bdf8; margin-bottom: 12px;">📚 Top Courses & Platforms</h4>
+          <div id="coursesList"></div>
+        </div>
+
+        <div class="roadmap-section">
+          <h4 style="color: #a855f7; margin-bottom: 12px;">🚀 Recommended Portfolio Projects</h4>
+          <div id="projectsList"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal Pop-up for Option Details -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h3 id="modalTitle" style="color: #fff; font-size: 1.4rem; margin-bottom: 10px;"></h3>
+      <div id="modalBody" style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;"></div>
+    </div>
+  </div>
+
+  <script src="../js/roadmap-data.js"></script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const query = urlParams.get('q') || 'Artificial Intelligence';
-      const renderer = new RoadmapRenderer('roadmapView');
-      renderer.loadAndRender(query);
+      const categoryGrid = document.getElementById('categoryGrid');
+      const subDomainContainer = document.getElementById('subDomainContainer');
+      const subDomainGrid = document.getElementById('subDomainGrid');
+      const roadmapDisplay = document.getElementById('roadmapDisplay');
+      
+      const modal = document.getElementById('detailModal');
+      const closeModal = document.getElementById('closeModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+
+      closeModal.addEventListener('click', () => modal.style.display = 'none');
+      window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+      function openModal(title, htmlContent) {
+        modalTitle.textContent = title;
+        modalBody.innerHTML = htmlContent;
+        modal.style.display = 'flex';
+      }
+
+      if (typeof domainCategories === 'undefined') return;
+
+      // 1. Render Categories
+      Object.keys(domainCategories).forEach(catKey => {
+        const cat = domainCategories[catKey];
+        const card = document.createElement('div');
+        card.className = 'card-box';
+        card.innerHTML = `
+          <div style="font-size: 1.8rem; margin-bottom: 8px;">${cat.icon}</div>
+          <div style="font-weight: 700; font-size: 1.05rem;">${cat.title}</div>
+          <div style="font-size: 0.82rem; color: #94a3b8; margin-top: 4px;">${cat.shortDesc}</div>
+        `;
+        card.addEventListener('click', () => {
+          document.querySelectorAll('#categoryGrid .card-box').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          renderSubDomains(catKey);
+        });
+        categoryGrid.appendChild(card);
+      });
+
+      // 2. Render Sub-Domains
+      function renderSubDomains(catKey) {
+        const cat = domainCategories[catKey];
+        subDomainGrid.innerHTML = '';
+        roadmapDisplay.style.display = 'none';
+        subDomainContainer.style.display = 'block';
+
+        Object.keys(cat.subDomains).forEach(subKey => {
+          const sub = cat.subDomains[subKey];
+          const subCard = document.createElement('div');
+          subCard.className = 'card-box';
+          subCard.innerHTML = `
+            <div style="font-weight: 700; font-size: 1rem; color: #fff;">${sub.title}</div>
+            <div style="font-size: 0.8rem; color: #818cf8; margin-top: 6px;">View Full Roadmap &rarr;</div>
+          `;
+          subCard.addEventListener('click', () => {
+            document.querySelectorAll('#subDomainGrid .card-box').forEach(c => c.classList.remove('active'));
+            subCard.classList.add('active');
+            renderRoadmap(sub);
+          });
+          subDomainGrid.appendChild(subCard);
+        });
+      }
+
+      // 3. Render Roadmap Details & Bind Click Events
+      function renderRoadmap(sub) {
+        roadmapDisplay.style.display = 'block';
+        document.getElementById('activeDomainTitle').textContent = sub.title;
+        document.getElementById('activeDomainOverview').textContent = sub.overview || "Comprehensive tailored pathway.";
+        document.getElementById('salaryPill').textContent = `💰 Avg. Salary: ${sub.avgSalary || 'N/A'}`;
+        document.getElementById('durationPill').textContent = `⏱️ Estimated Time: ${sub.timeToMaster || 'N/A'}`;
+
+        // Timeline Phases
+        const phasesContainer = document.getElementById('phasesContainer');
+        phasesContainer.innerHTML = (sub.phases || []).map(p => `
+          <div class="phase-card">
+            <strong style="color: #fff;">${p.name}</strong>
+            <div style="font-size: 0.88rem; color: #94a3b8; margin-top: 2px;">${p.desc}</div>
+          </div>
+        `).join('');
+
+        // Clickable Roles
+        const rolesList = document.getElementById('rolesList');
+        rolesList.innerHTML = '';
+        (sub.roles || []).forEach(r => {
+          const roleObj = typeof r === 'object' ? r : { name: r, desc: 'Specialized role in this industry.' };
+          const badge = document.createElement('span');
+          badge.className = 'clickable-badge';
+          badge.style.color = '#818cf8';
+          badge.textContent = roleObj.name;
+          badge.addEventListener('click', () => {
+            openModal(`Role: ${roleObj.name}`, `<p>${roleObj.desc}</p>`);
+          });
+          rolesList.appendChild(badge);
+        });
+
+        // Companies
+        document.getElementById('companiesList').innerHTML = (sub.companies || []).map(c => `
+          <span class="clickable-badge" style="color: #34d399;">${c}</span>
+        `).join('');
+
+        // Clickable Skills
+        const skillsList = document.getElementById('skillsList');
+        skillsList.innerHTML = '';
+        (sub.skills || []).forEach(s => {
+          const badge = document.createElement('span');
+          badge.className = 'clickable-badge';
+          badge.style.color = '#f472b6';
+          badge.textContent = s;
+          badge.addEventListener('click', () => {
+            openModal(`Skill Focus: ${s}`, `<p>Key technical competency required to build expertise in <strong>${sub.title}</strong>.</p>`);
+          });
+          skillsList.appendChild(badge);
+        });
+
+        // Certifications
+        const certsList = document.getElementById('certsList');
+        certsList.innerHTML = '';
+        (sub.certs || []).forEach(cert => {
+          const certObj = typeof cert === 'object' ? cert : { name: cert, provider: 'Industry Standard', difficulty: 'Intermediate' };
+          const badge = document.createElement('span');
+          badge.className = 'clickable-badge';
+          badge.style.color = '#fbbf24';
+          badge.textContent = certObj.name;
+          badge.addEventListener('click', () => {
+            openModal(`Certification: ${certObj.name}`, `
+              <p><strong>Provider:</strong> ${certObj.provider}</p>
+              <p><strong>Difficulty:</strong> ${certObj.difficulty}</p>
+            `);
+          });
+          certsList.appendChild(badge);
+        });
+
+        // Courses
+        const coursesList = document.getElementById('coursesList');
+        coursesList.innerHTML = '';
+        (sub.courses || []).forEach(crs => {
+          const item = document.createElement('div');
+          item.style.cssText = "padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer;";
+          item.innerHTML = `<strong style="color: #fff;">• ${crs.name}</strong> <span style="color: #94a3b8; font-size: 0.85rem;">(${crs.platform})</span>`;
+          item.addEventListener('click', () => {
+            openModal(crs.name, `<p><strong>Platform:</strong> ${crs.platform}</p><p><strong>Est. Duration:</strong> ${crs.duration || 'Self-paced'}</p>`);
+          });
+          coursesList.appendChild(item);
+        });
+
+        // Projects
+        const projectsList = document.getElementById('projectsList');
+        projectsList.innerHTML = '';
+        (sub.projects || []).forEach(p => {
+          const item = document.createElement('div');
+          item.style.cssText = "padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; cursor: pointer;";
+          item.innerHTML = `<strong style="color: #a855f7;">${p.title}</strong><div style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px;">${p.desc}</div>`;
+          item.addEventListener('click', () => {
+            openModal(`Project Spec: ${p.title}`, `<p>${p.desc}</p>`);
+          });
+          projectsList.appendChild(item);
+        });
+
+        roadmapDisplay.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   </script>
 </body>

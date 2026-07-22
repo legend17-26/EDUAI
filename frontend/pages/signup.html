@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPath AI — Sign Up</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="auth-body">
+
+  <!-- Background Animated Glowing Orbs -->
+  <div class="background-container">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+
+  <main class="auth-wrapper">
+    <div class="auth-container">
+
+      <!-- LEFT SIDE: Hero Section -->
+      <section class="auth-hero">
+        <div class="brand-header">
+          <div class="brand-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="brand-name">EduPath AI</span>
+        </div>
+
+        <div class="hero-content">
+          <span class="badge badge-hero">AI-Powered Learning</span>
+          <h1 class="hero-title">Elevate Your Engineering & Career Path</h1>
+          <p class="hero-description">Architect your future with custom AI roadmaps, instant milestone tracking, and resume alignment.</p>
+
+          <ul class="feature-list">
+            <li class="feature-item">
+              <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>✔ AI Career Roadmaps</span>
+            </li>
+            <li class="feature-item">
+              <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>✔ Personalized Learning</span>
+            </li>
+            <li class="feature-item">
+              <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>✔ Resume Builder</span>
+            </li>
+            <li class="feature-item">
+              <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>✔ AI Career Assistant</span>
+            </li>
+            <li class="feature-item">
+              <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>✔ Progress Tracking</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-footer">
+          <p>&copy; 2026 EduPath AI. All rights reserved.</p>
+        </div>
+      </section>
+
+      <!-- RIGHT SIDE: Glassmorphism Card -->
+      <section class="auth-card-wrapper">
+        <div class="auth-card">
+
+          <div class="auth-tabs" role="tablist">
+            <a href="login.html" class="tab-btn">Sign In</a>
+            <a href="signup.html" class="tab-btn active">Sign Up</a>
+          </div>
+
+          <form id="signUpForm" class="auth-form active" novalidate>
+            <div class="form-header">
+              <h2>Create an Account</h2>
+              <p>Get started with your free account today.</p>
+            </div>
+
+            <div class="input-group">
+              <div class="input-field">
+                <input type="text" id="regFullName" placeholder=" " required />
+                <label for="regFullName">Full Name</label>
+              </div>
+              <span class="error-msg" id="regFullNameError"></span>
+            </div>
+
+            <div class="input-group">
+              <div class="input-field">
+                <input type="email" id="regEmail" placeholder=" " required />
+                <label for="regEmail">Email Address</label>
+              </div>
+              <span class="error-msg" id="regEmailError"></span>
+            </div>
+
+            <div class="input-group">
+              <div class="input-field">
+                <input type="tel" id="regPhone" placeholder=" " required />
+                <label for="regPhone">Phone Number</label>
+              </div>
+              <span class="error-msg" id="regPhoneError"></span>
+            </div>
+
+            <div class="input-group">
+              <div class="input-field">
+                <input type="password" id="regPassword" placeholder=" " required />
+                <label for="regPassword">Password</label>
+                <button type="button" class="toggle-password" aria-label="Toggle visibility">
+                  <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <div class="password-meter">
+                <div class="meter-bar"><div class="meter-progress" id="passwordProgress"></div></div>
+                <span class="meter-text" id="passwordText">Password strength</span>
+              </div>
+              <span class="error-msg" id="regPasswordError"></span>
+            </div>
+
+            <div class="input-group">
+              <div class="input-field">
+                <input type="password" id="regConfirmPassword" placeholder=" " required />
+                <label for="regConfirmPassword">Confirm Password</label>
+              </div>
+              <span class="error-msg" id="regConfirmPasswordError"></span>
+            </div>
+
+            <div class="form-options">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="termsAgree" required />
+                <span class="checkmark"></span>
+                <span class="label-text">I agree to the Terms & Privacy Policy</span>
+              </label>
+            </div>
+            <span class="error-msg" id="termsError"></span>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <span class="btn-text">Create Account</span>
+            </button>
+
+            <div class="divider"><span>OR</span></div>
+
+            <div class="social-auth">
+              <button type="button" class="btn btn-social" title="Continue with Google">Google</button>
+              <button type="button" class="btn btn-social" title="Continue with GitHub">GitHub</button>
+              <button type="button" class="btn btn-social" title="Continue with Microsoft">Microsoft</button>
+            </div>
+          </form>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="../js/auth.js"></script>
+</body>
+</html>
