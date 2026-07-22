@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 5. Sign In Form Submission & Redirect
+  // 5. Sign In Form Submission & Fallback Redirect
   // ==========================================
   const signInForm = document.getElementById('signInForm');
   if (signInForm) {
@@ -165,8 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
       clearErrors();
       let isValid = true;
 
+      // If specific login inputs exist, validate them; otherwise, allow a bypass for generic forms
       if (phone && !phone.value.trim()) {
-        showFieldError('loginPhoneError', 'Phone number is required');
+        showFieldError('loginPhoneError', 'Phone number or email is required');
         isValid = false;
       }
 
@@ -183,6 +184,18 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'dashboard.html';
         }, 1200);
       }
+    });
+  }
+
+  // Fallback listener for generic form or standalone "Continue" buttons on auth pages
+  const genericForm = document.querySelector('form:not(#signUpForm):not(#signInForm)');
+  if (genericForm) {
+    genericForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Redirecting to dashboard...', 'success');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 1000);
     });
   }
 

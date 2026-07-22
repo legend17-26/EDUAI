@@ -55,12 +55,23 @@
             <a href="signup.html" class="tab-btn">Sign Up</a>
           </div>
 
-          <form id="signInForm" class="auth-form active" novalidate>
-            <div class="form-header">
-              <h2>Welcome Back</h2>
-              <p>Enter your phone number and password.</p>
-            </div>
+          <form id="signInForm">
+  <!-- Phone number input field -->
+  <div class="input-group">
+    <label>Phone Number</label>
+    <input type="text" id="loginPhone" placeholder="Enter phone number">
+    <span id="loginPhoneError" class="error-msg" style="color: #ef4444; font-size: 0.8rem;"></span>
+  </div>
 
+  <!-- Password input field -->
+  <div class="input-group">
+    <label>Password</label>
+    <input type="password" id="loginPassword" placeholder="••••••••">
+    <span id="loginPasswordError" class="error-msg" style="color: #ef4444; font-size: 0.8rem;"></span>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-full">Continue</button>
+</form>
             <div class="input-group">
               <div class="input-field">
                 <input type="tel" id="loginPhone" placeholder=" " required />
