@@ -307,32 +307,46 @@
         const rolesList = document.getElementById('rolesList');
         rolesList.innerHTML = '';
         (sub.roles || []).forEach(r => {
-          const roleObj = typeof r === 'object' ? r : { name: r, desc: 'Specialized role in this industry.' };
+          const name = typeof r === 'object' ? r.name : r;
+          const desc = typeof r === 'object' ? r.desc : 'Specialized role in this industry.';
           const badge = document.createElement('span');
           badge.className = 'clickable-badge';
           badge.style.color = '#818cf8';
-          badge.textContent = roleObj.name;
+          badge.textContent = name;
           badge.addEventListener('click', () => {
-            openModal(`Role: ${roleObj.name}`, `<p>${roleObj.desc}</p>`);
+            openModal(`Role: ${name}`, `<p>${desc}</p>`);
           });
           rolesList.appendChild(badge);
         });
 
-        // Companies
-        document.getElementById('companiesList').innerHTML = (sub.companies || []).map(c => `
-          <span class="clickable-badge" style="color: #34d399;">${c}</span>
-        `).join('');
+        // Clickable Companies (FIXED: Handles Object and String)
+        const companiesList = document.getElementById('companiesList');
+        companiesList.innerHTML = '';
+        (sub.companies || []).forEach(c => {
+          const name = typeof c === 'object' ? c.name : c;
+          const desc = typeof c === 'object' ? c.desc : 'Leading organization hiring for this role.';
+          const badge = document.createElement('span');
+          badge.className = 'clickable-badge';
+          badge.style.color = '#34d399';
+          badge.textContent = name;
+          badge.addEventListener('click', () => {
+            openModal(`Hiring Company: ${name}`, `<p>${desc}</p>`);
+          });
+          companiesList.appendChild(badge);
+        });
 
-        // Clickable Skills
+        // Clickable Skills (FIXED: Handles Object and String)
         const skillsList = document.getElementById('skillsList');
         skillsList.innerHTML = '';
         (sub.skills || []).forEach(s => {
+          const name = typeof s === 'object' ? s.name : s;
+          const desc = typeof s === 'object' ? s.desc : `Key technical competency required to build expertise in ${sub.title}.`;
           const badge = document.createElement('span');
           badge.className = 'clickable-badge';
           badge.style.color = '#f472b6';
-          badge.textContent = s;
+          badge.textContent = name;
           badge.addEventListener('click', () => {
-            openModal(`Skill Focus: ${s}`, `<p>Key technical competency required to build expertise in <strong>${sub.title}</strong>.</p>`);
+            openModal(`Skill Focus: ${name}`, `<p>${desc}</p>`);
           });
           skillsList.appendChild(badge);
         });
@@ -348,22 +362,24 @@
           badge.textContent = certObj.name;
           badge.addEventListener('click', () => {
             openModal(`Certification: ${certObj.name}`, `
-              <p><strong>Provider:</strong> ${certObj.provider}</p>
-              <p><strong>Difficulty:</strong> ${certObj.difficulty}</p>
+              <p><strong>Provider:</strong> ${certObj.provider || 'N/A'}</p>
+              <p><strong>Difficulty:</strong> ${certObj.difficulty || 'N/A'}</p>
+              ${certObj.desc ? `<p class="mt-2">${certObj.desc}</p>` : ''}
             `);
           });
           certsList.appendChild(badge);
         });
 
-        // Courses
+        // Courses (FIXED: Fallback checks for platform / provider)
         const coursesList = document.getElementById('coursesList');
         coursesList.innerHTML = '';
         (sub.courses || []).forEach(crs => {
           const item = document.createElement('div');
           item.style.cssText = "padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer;";
-          item.innerHTML = `<strong style="color: #fff;">• ${crs.name}</strong> <span style="color: #94a3b8; font-size: 0.85rem;">(${crs.platform})</span>`;
+          const platform = crs.provider || crs.platform || 'Self-Paced';
+          item.innerHTML = `<strong style="color: #fff;">• ${crs.name}</strong> <span style="color: #94a3b8; font-size: 0.85rem;">(${platform})</span>`;
           item.addEventListener('click', () => {
-            openModal(crs.name, `<p><strong>Platform:</strong> ${crs.platform}</p><p><strong>Est. Duration:</strong> ${crs.duration || 'Self-paced'}</p>`);
+            openModal(crs.name, `<p><strong>Platform / Provider:</strong> ${platform}</p><p><strong>Est. Duration:</strong> ${crs.duration || 'Self-paced'}</p>${crs.desc ? `<p class="mt-2">${crs.desc}</p>` : ''}`);
           });
           coursesList.appendChild(item);
         });
@@ -385,5 +401,7 @@
       }
     });
   </script>
+  <script src="../js/roadmap-data.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>
