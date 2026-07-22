@@ -1,122 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduPath AI — Master Any Career Path</title>
-
-  <!-- Correct Relative CSS Paths from Root -->
-  <link rel="stylesheet" href="frontend/assets/css/main.css" />
-  <link rel="stylesheet" href="frontend/assets/css/layout.css" />
-  <link rel="stylesheet" href="frontend/assets/css/components.css" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    .hero-card {
-      background: var(--bg-glass-card, rgba(15, 23, 42, 0.75));
-      border: 1px solid var(--bg-card-border, rgba(255, 255, 255, 0.1));
-      border-radius: 20px;
-      padding: 50px 40px;
-      max-width: 800px;
-      width: 100%;
-      text-align: center;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-
-    .domain-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 24px 0 32px 0;
-    }
-
-    .domain-pill {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .cta-button-group {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-secondary-custom {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      padding: 12px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.25s ease;
-    }
-
-    .btn-secondary-custom:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: #fff;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Career Roadmap Explorer</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="auth-body">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-indigo-600 selection:text-white">
 
-  <div class="background-container">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-
-  <main class="auth-wrapper" style="padding: 20px;">
-    <div class="hero-card">
-      <span class="badge badge-hero" style="margin-bottom: 16px; display: inline-block;">
-        ⚡ AI-Powered Universal Career & Learning Platform
-      </span>
-
-      <h1 style="font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #ffffff;">
-        Master Any Education & Career Path with Precision AI
-      </h1>
-
-      <p style="color: #94a3b8; font-size: 1.05rem; max-width: 620px; margin: 0 auto;">
-        From Healthcare, Law, and Arts to Technology, Aviation, and Business—get dynamic step-by-step roadmaps, syllabus answers, and skill guides for any field.
-      </p>
-
-      <div class="domain-badges">
-        <span class="domain-pill">🩺 Healthcare & Medicine</span>
-        <span class="domain-pill">💻 Tech & Software</span>
-        <span class="domain-pill">💼 Business & Marketing</span>
-        <span class="domain-pill">⚖️ Law & Legal Studies</span>
-        <span class="domain-pill">🎭 Arts & Humanities</span>
-        <span class="domain-pill">✈️ Aviation & Hospitality</span>
-        <span class="domain-pill">🌱 Agriculture & Climate</span>
-      </div>
-
-      <!-- Links directed into frontend/pages/ -->
-      <div class="cta-button-group">
-        <a href="frontend/pages/roadmap.html" class="btn btn-primary" style="padding: 12px 28px; font-weight: 600; text-decoration: none;">
-          Get Started Free &rarr;
-        </a>
-        <a href="frontend/pages/login.html" class="btn-secondary-custom">
-          Sign In
-        </a>
-      </div>
+  <!-- Header Section -->
+  <header class="max-w-7xl mx-auto px-6 pt-12 pb-8 text-center">
+    <div class="inline-block px-4 py-1.5 mb-4 rounded-full border border-indigo-500/30 bg-indigo-950/40 text-indigo-400 text-xs font-semibold tracking-wider uppercase">
+      Interactive Career Roadmap Explorer
     </div>
+    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-3">
+      <span class="text-indigo-500">Select</span> a Domain & Click Any Option For Deep Details
+    </h1>
+    <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
+      Explore comprehensive career tracks, required skill sets, top hiring companies, and actionable learning roadmaps.
+    </p>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 pb-20 space-y-12">
+    
+    <!-- Step 1: Select Main Field -->
+    <section>
+      <div class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-4">
+        1. Select Main Field
+      </div>
+      <div id="main-domains-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Dynamically injected via app.js -->
+      </div>
+    </section>
+
+    <!-- Step 2: Select Specialization / Sub-Domain (Hidden initially) -->
+    <section id="subdomain-section" class="hidden space-y-4">
+      <div class="flex items-center justify-between">
+        <div id="subdomain-header-title" class="text-xs font-bold uppercase tracking-widest text-indigo-400">
+          2. Select Specialization
+        </div>
+        <button id="back-to-domains" class="text-xs text-indigo-400 hover:text-indigo-300 underline cursor-pointer">
+          ← Back to Main Fields
+        </button>
+      </div>
+      <div id="subdomains-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Dynamically injected via app.js -->
+      </div>
+    </section>
+
+    <!-- Step 3: Detailed Roadmap & Insights View (Hidden initially) -->
+    <section id="roadmap-details-section" class="hidden space-y-6 pt-4 border-t border-slate-800">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 id="active-subdomain-title" class="text-2xl font-bold text-white">Sub-domain Title</h2>
+          <p id="active-subdomain-desc" class="text-slate-400 text-sm mt-1">Overview text goes here...</p>
+        </div>
+        <button id="back-to-subdomains" class="text-xs text-indigo-400 hover:text-indigo-300 underline cursor-pointer">
+          ← Back to Specializations
+        </button>
+      </div>
+
+      <!-- Grid Cards for Roles, Companies, Skills, Certs, Courses, Projects -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Career Roles -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
+          <h3 class="text-sm font-semibold text-amber-400 mb-3 flex items-center gap-2"> Career Roles</h3>
+          <div id="roles-container" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+        <!-- Top Hiring Companies -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
+          <h3 class="text-sm font-semibold text-emerald-400 mb-3 flex items-center gap-2"> Top Hiring Companies</h3>
+          <div id="companies-container" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+        <!-- Key Skills -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
+          <h3 class="text-sm font-semibold text-indigo-400 mb-3 flex items-center gap-2"> Key Skills</h3>
+          <div id="skills-container" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+        <!-- Recognized Certifications -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
+          <h3 class="text-sm font-semibold text-yellow-400 mb-3 flex items-center gap-2">Recognized Certifications</h3>
+          <div id="certs-container" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+        <!-- Top Courses & Platforms -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
+          <h3 class="text-sm font-semibold text-cyan-400 mb-3 flex items-center gap-2"> Top Courses & Platforms</h3>
+          <div id="courses-container" class="space-y-2"></div>
+        </div>
+
+        <!-- Recommended Portfolio Projects -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
+          <h3 class="text-sm font-semibold text-purple-400 mb-3 flex items-center gap-2">Recommended Portfolio Projects</h3>
+          <div id="projects-container" class="space-y-2"></div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
-  <!-- JS Relative Import -->
-  <script src="frontend/js/app.js"></script>
+  <!-- JavaScript Files -->
+  <script src="roadmap-data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
