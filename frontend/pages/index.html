@@ -1,89 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduPath AI</title>
-
-  <!-- Correct Relative Paths (Navigates up from pages/ to frontend/assets/css/) -->
-  <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/layout.css" />
-  <link rel="stylesheet" href="../assets/css/components.css" />
-  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPath AI — Home</title>
+  
+  <!-- CSS Asset Paths -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="index.html" class="brand-logo">EduPath AI</a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="roadmap.html" class="nav-link">Roadmaps</a>
-        <a href="tools.html" class="nav-link">Tools</a>
-      </div>
-      <div class="auth-btn-group"></div>
-    </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <header style="padding: 6rem 0 4rem; text-align: center;">
-    <div class="container">
-      <span class="badge badge-primary" style="margin-bottom: 1rem;">Powered by Gemini AI</span>
-      <h1 style="font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;">
-        Universal Career & Education <br />
-        <span style="background: var(--gradient-primary);
-         background-clip: text;
-         -webkit-background-clip: text;
-         -webkit-text-fill-color: transparent;">Roadmaps for Everyone</span>
-      </h1>
-      <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 700px; margin: 0 auto 2.5rem;">
-        From MBBS, Aviation, and Law to AI, Civil Engineering, and Fine Arts. Explore structured, step-by-step career paths for any field globally.
-      </p>
-
-      <!-- Search Input -->
-      <div class="search-box">
-        <input type="text" class="search-input" placeholder="Search any career or degree (e.g. Cardiothoracic Surgery, UPSC, AI)..." />
-      </div>
+  <!-- Page Content Container -->
+  <div class="container" style="padding: 60px 20px; text-align: center;">
+    <h1>Welcome to EduPath AI</h1>
+    <p>Your universal education and career platform.</p>
+    <div style="margin-top: 30px;">
+      <a href="roadmap.html" class="btn btn-primary" style="margin-right: 10px; text-decoration: none; display: inline-block;">Explore Roadmaps</a>
+      <a href="auth.html" class="btn btn-secondary" style="text-decoration: none; display: inline-block;">Sign In / Register</a>
     </div>
-  </header>
-
-  <!-- Trending Domains Section -->
-  <section style="padding: 4rem 0;">
-    <div class="container">
-      <h2 style="margin-bottom: 2rem;">Explore Universal Streams</h2>
-      <div class="grid grid-cols-4 gap-md">
-        <div class="card-glass">
-          <span class="badge badge-primary">Medical</span>
-          <h3 style="margin: 0.5rem 0;">MBBS & Surgery</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Complete medical track from NEET to Specialization.</p>
-        </div>
-        <div class="card-glass">
-          <span class="badge badge-success">Legal</span>
-          <h3 style="margin: 0.5rem 0;">Corporate Law</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Bar preparation, internships, and associate paths.</p>
-        </div>
-        <div class="card-glass">
-          <span class="badge badge-primary">Aviation</span>
-          <h3 style="margin: 0.5rem 0;">Commercial Pilot</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Ground school, flight hours, and rating roadmap.</p>
-        </div>
-        <div class="card-glass">
-          <span class="badge badge-success">Tech</span>
-          <h3 style="margin: 0.5rem 0;">AI & Data Science</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Math, Machine Learning models, and deployments.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-bottom">
-      &copy; 2026 EduPath AI. Built for Universal Education & Career Advancement.
+      &copy; 2026 EduPath AI. Built for Universal Education & Career.
     </div>
   </footer>
 
-  <script type="module" src="../assets/js/app.js"></script>
-  <script type="module" src="../assets/js/auth.js"></script>
+  <!-- JavaScript File Paths -->
+  <script src="../js/roadmap-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

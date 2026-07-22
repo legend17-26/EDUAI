@@ -3,197 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduPath AI — Detailed Roadmap Explorer</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>EduPath AI — Universal Education & Career Platform</title>
+  
+  <!-- CSS Asset Paths from Root -->
+  <link rel="stylesheet" href="./frontend/assets/css/main.css">
+  <link rel="stylesheet" href="./frontend/assets/css/layout.css">
+  <link rel="stylesheet" href="./frontend/assets/css/components.css">
+  <link rel="stylesheet" href="./frontend/assets/css/dashboard.css">
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-indigo-600 selection:text-white">
+<body class="auth-body">
 
-  <!-- Header Section -->
-  <header class="max-w-7xl mx-auto px-6 pt-12 pb-8 text-center">
-    <div class="inline-block px-4 py-1.5 mb-4 rounded-full border border-indigo-500/30 bg-indigo-950/40 text-indigo-400 text-xs font-semibold tracking-wider uppercase">
-      Interactive Career Roadmap Explorer
-    </div>
-    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-3">
-      <span class="text-indigo-500">Select</span> a Domain & Click Any Option For Deep Details
-    </h1>
-    <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
-      Explore comprehensive career tracks, required skill sets, top hiring companies, and actionable learning roadmaps.
-    </p>
-  </header>
+  <div class="background-container">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
 
-  <main class="max-w-7xl mx-auto px-6 pb-20 space-y-12">
+  <main class="auth-wrapper" style="max-width: 900px; padding: 60px 20px; text-align: center;">
     
-    <!-- Step 1: Select Main Field -->
-    <section id="main-domains-section">
-      <div class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-4">
-        1. Select Main Field
-      </div>
-      <div id="main-domains-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- Dynamically injected via script -->
-      </div>
-    </section>
+    <div style="margin-bottom: 24px;">
+      <span class="badge badge-hero">Welcome to EduPath AI</span>
+      <h1 style="font-size: 2.8rem; margin-top: 12px; color: #fff;">Your Universal Education & Career Companion</h1>
+      <p style="color: #94a3b8; font-size: 1.1rem; margin-top: 10px; line-height: 1.6;">
+        Explore interactive career roadmaps, structured domain paths, and intelligent learning features built to accelerate your professional journey.
+      </p>
+    </div>
 
-    <!-- Step 2: Select Specialization / Sub-Domain (Hidden initially) -->
-    <section id="subdomain-section" class="hidden space-y-4">
-      <div class="flex items-center justify-between">
-        <div id="subdomain-header-title" class="text-xs font-bold uppercase tracking-widest text-indigo-400">
-          2. Select Specialization
-        </div>
-        <button id="back-to-domains" class="text-xs text-indigo-400 hover:text-indigo-300 underline cursor-pointer">
-          ← Back to Main Fields
-        </button>
-      </div>
-      <div id="subdomains-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Dynamically injected via script -->
-      </div>
-    </section>
-
-    <!-- Step 3: Detailed Roadmap & Insights View (Hidden initially) -->
-    <section id="roadmap-details-section" class="hidden space-y-6 pt-4 border-t border-slate-800">
-      <div class="flex items-center justify-between flex-wrap gap-4">
-        <div>
-          <h2 id="active-subdomain-title" class="text-2xl font-bold text-white">Sub-domain Title</h2>
-          <p id="active-subdomain-desc" class="text-slate-400 text-sm mt-1">Overview text goes here...</p>
-        </div>
-        <button id="back-to-subdomains" class="text-xs text-indigo-400 hover:text-indigo-300 underline cursor-pointer">
-          ← Back to Specializations
-        </button>
-      </div>
-
-      <!-- Grid Cards for Roles, Companies, Skills, Certs, Courses, Projects -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Career Roles -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
-          <h3 class="text-sm font-semibold text-amber-400 mb-3 flex items-center gap-2">💼 Career Roles</h3>
-          <div id="roles-container" class="flex flex-wrap gap-1.5"></div>
-        </div>
-
-        <!-- Top Hiring Companies -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
-          <h3 class="text-sm font-semibold text-emerald-400 mb-3 flex items-center gap-2">🏢 Top Hiring Companies</h3>
-          <div id="companies-container" class="flex flex-wrap gap-1.5"></div>
-        </div>
-
-        <!-- Key Skills -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
-          <h3 class="text-sm font-semibold text-indigo-400 mb-3 flex items-center gap-2">⚡ Key Skills</h3>
-          <div id="skills-container" class="flex flex-wrap gap-1.5"></div>
-        </div>
-
-        <!-- Recognized Certifications -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
-          <h3 class="text-sm font-semibold text-yellow-400 mb-3 flex items-center gap-2">🏆 Recognized Certifications</h3>
-          <div id="certs-container" class="flex flex-wrap gap-1.5"></div>
-        </div>
-
-        <!-- Top Courses & Platforms -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
-          <h3 class="text-sm font-semibold text-cyan-400 mb-3 flex items-center gap-2">📚 Top Courses & Platforms</h3>
-          <div id="courses-container" class="space-y-2"></div>
-        </div>
-
-        <!-- Recommended Portfolio Projects -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-lg">
-          <h3 class="text-sm font-semibold text-purple-400 mb-3 flex items-center gap-2">🚀 Recommended Portfolio Projects</h3>
-          <div id="projects-container" class="space-y-2"></div>
-        </div>
-
-      </div>
-    </section>
+    <div style="display: flex; justify-content: center; gap: 16px; margin-top: 36px; flex-wrap: wrap;">
+      <a href="./frontend/pages/roadmap.html" class="btn btn-primary" style="padding: 14px 28px; text-decoration: none; font-size: 1rem;">Explore Career Roadmaps &rarr;</a>
+      <a href="./frontend/pages/auth.html" class="btn btn-secondary" style="padding: 14px 28px; text-decoration: none; font-size: 1rem; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1);">Sign In / Register</a>
+    </div>
 
   </main>
 
-  <!-- Universal Modal Popup container fallback -->
-  <div id="info-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-xl max-w-lg w-full p-6 relative shadow-2xl">
-      <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">&times;</button>
-      <span id="modal-tag" class="text-xs uppercase font-bold tracking-wider text-indigo-400">Overview</span>
-      <h3 id="modal-title" class="text-xl font-bold text-white mt-1 mb-3">Details</h3>
-      <p id="modal-description" class="text-slate-300 text-sm leading-relaxed"></p>
-    </div>
-  </div>
-
-  <!-- JavaScript Files -->
-  <script src="../js/roadmap-data.js"></script>
-  <script src="../js/app.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const mainGrid = document.getElementById("main-domains-grid");
-      const subdomainSection = document.getElementById("subdomain-section");
-      const subdomainsGrid = document.getElementById("subdomains-grid");
-      const roadmapSection = document.getElementById("roadmap-details-section");
-      
-      const backToDomainsBtn = document.getElementById("back-to-domains");
-      const backToSubdomainsBtn = document.getElementById("back-to-subdomains");
-
-      if (typeof domainCategories === "undefined") return;
-
-      // 1. Render Main Categories
-      Object.keys(domainCategories).forEach(catKey => {
-        const cat = domainCategories[catKey];
-        const card = document.createElement("div");
-        card.className = "bg-slate-900/70 border border-slate-800 hover:border-indigo-500 rounded-xl p-5 cursor-pointer transition-all duration-200 hover:-translate-y-1 shadow-md";
-        card.innerHTML = `
-          <div class="text-3xl mb-3">${cat.icon || "📁"}</div>
-          <h3 class="font-bold text-white text-lg">${cat.title}</h3>
-          <p class="text-slate-400 text-xs mt-1 leading-relaxed">${cat.shortDesc || ""}</p>
-        `;
-        card.addEventListener("click", () => {
-          renderSubDomains(catKey);
-        });
-        mainGrid.appendChild(card);
-      });
-
-      // 2. Render Sub-Domains
-      function renderSubDomains(catKey) {
-        const cat = domainCategories[catKey];
-        subdomainsGrid.innerHTML = "";
-        subdomainSection.classList.remove("hidden");
-        roadmapSection.classList.add("hidden");
-
-        Object.keys(cat.subDomains).forEach(subKey => {
-          const sub = cat.subDomains[subKey];
-          const subCard = document.createElement("div");
-          subCard.className = "bg-slate-900/60 border border-slate-800 hover:border-indigo-500 rounded-xl p-4 cursor-pointer transition-all duration-200 shadow";
-          subCard.innerHTML = `
-            <h4 class="font-bold text-white text-sm">${sub.title}</h4>
-            <span class="text-xs text-indigo-400 mt-2 inline-block">Explore Roadmap &rarr;</span>
-          `;
-          subCard.addEventListener("click", () => {
-            renderRoadmapDetails(sub);
-          });
-          subdomainsGrid.appendChild(subCard);
-        });
-
-        subdomainSection.scrollIntoView({ behavior: 'smooth' });
-      }
-
-      // 3. Render Roadmap Details via app.js helper functions
-      function renderRoadmapDetails(sub) {
-        roadmapSection.classList.remove("hidden");
-        document.getElementById("active-subdomain-title").textContent = sub.title;
-        document.getElementById("active-subdomain-desc").textContent = sub.overview || "Comprehensive tailored pathway.";
-
-        // Use the master functions from app.js
-        if (typeof loadSubDomainData === "function") {
-          loadSubDomainData(sub);
-        }
-
-        roadmapSection.scrollIntoView({ behavior: 'smooth' });
-      }
-
-      backToDomainsBtn.addEventListener("click", () => {
-        subdomainSection.classList.add("hidden");
-        roadmapSection.classList.add("hidden");
-      });
-
-      backToSubdomainsBtn.addEventListener("click", () => {
-        roadmapSection.classList.add("hidden");
-        subdomainSection.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>
+  <!-- JavaScript Asset Paths from Root -->
+  <script src="./frontend/js/roadmap-data.js"></script>
+  <script src="./frontend/js/api.js"></script>
+  <script src="./frontend/js/auth.js"></script>
+  <script src="./frontend/js/app.js"></script>
 </body>
 </html>
