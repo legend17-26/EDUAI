@@ -4,7 +4,7 @@ const domainCategories = {
   // ==========================================
   engineering: {
     title: "Engineering & Technology",
-    icon: "💻",
+    icon: "",
     shortDesc: "Software, Hardware, AI, Data, Cloud, Cybersecurity, Mechanical, Civil & Infrastructure.",
     subDomains: {
       aiml: {
@@ -24,10 +24,10 @@ const domainCategories = {
           { name: "Data Scientist", desc: "Extracts actionable insights from complex structured/unstructured datasets." }
         ],
         companies: [
-          { name: "Google", desc: "Global technology leader in search, AI research (DeepMind), and cloud computing." },
-          { name: "OpenAI", desc: "AI research organization behind revolutionary models like GPT-4, DALL-E, and Sora." },
-          { name: "TCS", desc: "organization behind revolutionary service based companies " }
-        ],
+      { name: "Google", desc: "Global technology leader in search, AI research (DeepMind), and cloud computing.", url: "https://www.google.com" },
+      { name: "OpenAI", desc: "AI research organization behind revolutionary models like GPT-4, DALL-E, and Sora.", url: "https://openai.com" },
+      { name: "TCS", desc: "organization behind revolutionary service based companies", url: "https://www.tcs.com" }
+    ],
         skills: [
           { name: "Python", desc: "The primary programming language for artificial intelligence and data science." },
           { name: "PyTorch", desc: "Leading open-source deep learning framework favored by research and industry teams." }
@@ -193,7 +193,7 @@ const domainCategories = {
   // ==========================================
   medicine: {
     title: "Medicine & Health Sciences",
-    icon: "🩺",
+    icon: "",
     shortDesc: "MBBS, Dentistry, Nursing, Pharmacy, Biotechnology, Medical Lab & Public Health.",
     subDomains: {
       mbbs: {
@@ -372,7 +372,7 @@ const domainCategories = {
   // ==========================================
   business: {
     title: "Business & Management",
-    icon: "📈",
+    icon: "",
     shortDesc: "Finance, Product Management, Marketing, Human Resources, Strategy & Consulting.",
     subDomains: {
       finance: {
@@ -495,7 +495,7 @@ const domainCategories = {
   // ==========================================
   design: {
     title: "Design, Arts & Creative Media",
-    icon: "🎨",
+    icon: "",
     shortDesc: "UI/UX Design, Graphic & Brand Design, 3D Animation, Game Art, and Film Production.",
     subDomains: {
       uiux: {
@@ -618,7 +618,7 @@ const domainCategories = {
   // ==========================================
   humanities: {
     title: "Humanities & Social Sciences",
-    icon: "📚",
+    icon: "",
     shortDesc: "Psychology, Sociology, Journalism, History, Political Science & Linguistics.",
     subDomains: {
       psychology: {
@@ -741,7 +741,7 @@ const domainCategories = {
   // ==========================================
   law: {
     title: "Law & Public Policy",
-    icon: "⚖️",
+    icon: "",
     shortDesc: "Corporate Law, Cyber Law, Intellectual Property, International Relations & Governance.",
     subDomains: {
       corporate_law: {
@@ -808,7 +808,7 @@ const domainCategories = {
   // ==========================================
   sciences: {
     title: "Pure & Applied Sciences",
-    icon: "🔬",
+    icon: "",
     shortDesc: "Physics, Chemistry, Quantum Computing, Climate Science, Mathematics & Astronomy.",
     subDomains: {
       physics: {
@@ -903,7 +903,7 @@ const domainCategories = {
   // ==========================================
   education: {
     title: "Education & Teaching",
-    icon: "🎓",
+    icon: "",
     shortDesc: "K-12 Teaching, Special Education, Higher Education, EdTech & Curriculum Design.",
     subDomains: {
       k12_teaching: {
@@ -970,7 +970,7 @@ const domainCategories = {
   // ==========================================
   trades: {
     title: "Vocational, Trades & Aviation",
-    icon: "🛠️",
+    icon: "",
     shortDesc: "Commercial Aviation, Culinary Arts, Automotive Tech, Electrical Trades & Logistics.",
     subDomains: {
       aviation: {
@@ -1065,7 +1065,7 @@ const domainCategories = {
   // ==========================================
   defense: {
     title: "Defense, Public Service & Sports",
-    icon: "🛡️",
+    icon: "",
     shortDesc: "Armed Forces, Civil Services (IAS/IPS), Intelligence, Public Administration & Sports Science.",
     subDomains: {
       civil_services: {

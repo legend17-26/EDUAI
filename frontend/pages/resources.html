@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPath AI — Universal Resources & Notes</title>
+  
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --accent-indigo: #6366f1;
+      --text-main: #fff;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: inherit;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Top Navigation Bar with right-side options removed */
+    .top-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background: rgba(11, 15, 25, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 10;
+    }
+    
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .dashboard-header h1 {
+      font-size: 1.8rem;
+      margin: 0 0 6px 0;
+    }
+
+    .dashboard-header p {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .resource-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .resource-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .resource-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .resource-btn {
+      padding: 10px 16px;
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .resource-btn:hover {
+      background: var(--accent-indigo);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar keeping only the brand title connected to root index.html -->
+  <header class="top-navbar">
+    <a href="../../index.html" class="nav-brand">EduPath AI Hub</a>
+    <div class="global-search-container" style="position: relative; display: flex; align-items: center;">
+      <span style="position: absolute; left: 12px; font-size: 0.85rem; pointer-events: none;"></span>
+      <input type="text" id="globalSearchInput" placeholder="Search notes, exam question banks, tools..." onkeyup="filterDomainResources()" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); padding: 8px 14px 8px 36px; border-radius: 10px; color: #fff; font-size: 0.9rem; outline: none; width: 280px; transition: all 0.2s ease;">
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <div class="dashboard-header">
+      <h1>Universal Resources & Study Notes </h1>
+      <p>Comprehensive module notes, core curricula, and reference materials across all available domains.</p>
+    </div>
+
+    <!-- Master Grid for All Fields -->
+    <div class="resources-grid">
+      
+      <!-- 1. Engineering & Technology -->
+      <div class="resource-card">
+        <div>
+          <h3> Engineering & Technology</h3>
+          <p>Software, Hardware, AI, Data, Cloud, Cybersecurity, Mechanical, Civil & Infrastructure notes, question banks, and lab guides.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 2. Medicine & Health Sciences -->
+      <div class="resource-card">
+        <div>
+          <h3> Medicine & Health Sciences</h3>
+          <p>MBBS, Dentistry, Nursing, Pharmacy, Biotechnology, Medical Lab & Public Health clinical guides and reference summaries.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 3. Business & Management -->
+      <div class="resource-card">
+        <div>
+          <h3> Business & Management</h3>
+          <p>Finance, Product Management, Marketing, Human Resources, Strategy & Consulting case studies and frameworks.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 4. Design, Arts & Creative Media -->
+      <div class="resource-card">
+        <div>
+          <h3> Design, Arts & Creative Media</h3>
+          <p>UI/UX Design, Graphic & Brand Design, 3D Animation, Game Art, and Film Production asset repositories and style guides.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 5. Humanities & Social Sciences -->
+      <div class="resource-card">
+        <div>
+          <h3> Humanities & Social Sciences</h3>
+          <p>Psychology, Sociology, Journalism, History, Political Science & Linguistics literature summaries and research papers.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 6. Law & Public Policy -->
+      <div class="resource-card">
+        <div>
+          <h3> Law & Public Policy</h3>
+          <p>Corporate Law, Cyber Law, Intellectual Property, International Relations & Governance statutes and case outlines.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 7. Pure & Applied Sciences -->
+      <div class="resource-card">
+        <div>
+          <h3> Pure & Applied Sciences</h3>
+          <p>Physics, Chemistry, Quantum Computing, Climate Science, Mathematics & Astronomy formulas, proofs, and data sets.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 8. Education & Teaching -->
+      <div class="resource-card">
+        <div>
+          <h3> Education & Teaching</h3>
+          <p>K-12 Teaching, Special Education, Higher Education, EdTech & Curriculum Design pedagogical notes and lesson plans.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 9. Vocational, Trades & Aviation -->
+      <div class="resource-card">
+        <div>
+          <h3> Vocational, Trades & Aviation</h3>
+          <p>Commercial Aviation, Culinary Arts, Automotive Tech, Electrical Trades & Logistics technical manuals and safety guidelines.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+      <!-- 10. Defense, Public Service & Sports -->
+      <div class="resource-card">
+        <div>
+          <h3> Defense, Public Service & Sports</h3>
+          <p>Armed Forces, Civil Services (IAS/IPS), Intelligence, Public Administration & Sports Science training modules and strategy notes.</p>
+        </div>
+        <a href="#" class="resource-btn" target="_blank">Access Field Notes →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/roadmap-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+  function filterDomainResources() {
+    const query = document.getElementById('globalSearchInput').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.resource-card');
+
+    cards.forEach(card => {
+      const textContent = card.innerText.toLowerCase();
+      if (textContent.includes(query)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
