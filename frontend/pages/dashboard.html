@@ -119,14 +119,11 @@
       color: #818cf8;
     }
 
+    /* Updated to single-column full-width layout */
     .dashboard-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr;
       gap: 28px;
-    }
-
-    @media (max-width: 1024px) {
-      .dashboard-grid { grid-template-columns: 1fr; }
     }
 
     .section-card {
@@ -214,9 +211,8 @@
     <a href="dashboard.html" class="nav-item active"> Dashboard</a>
     <a href="roadmap.html" class="nav-item"> Roadmaps</a>
     <a href="tools.html" class="nav-item"> Tools & AI</a>
-    <a href="resources.html" class="menu-item">Resources & Notes</a>
+    <a href="resources.html" class="nav-item">Resources & Notes</a>
     
-
     <a href="../../index.html" class="nav-item" style="margin-top: auto; color: #f87171;"> Sign Out</a>
   </aside>
 
@@ -256,367 +252,149 @@
       </div>
     </div>
 
-    <!-- Main Content Layout Split -->
+    <!-- Full-Width Main Content Layout -->
     <div class="dashboard-grid">
 
-      <!-- Left / Main Column -->
-      <div>
+      <!-- Active Roadmaps Progress -->
+      <div class="section-card">
+        <div class="section-title">
+          <span> Active Learning Roadmaps</span>
+          <a href="roadmap.html" style="font-size: 0.85rem; color: #818cf8; text-decoration: none;">View All &rarr;</a>
+        </div>
 
-        <!-- Active Roadmaps Progress -->
-        <div class="section-card">
-          <div class="section-title">
-            <span> Active Learning Roadmaps</span>
-            <a href="roadmap.html" style="font-size: 0.85rem; color: #818cf8; text-decoration: none;">View All &rarr;</a>
+        <div style="margin-bottom: 20px;">
+          <div class="item-meta">
+            <span class="item-title">AI & Machine Learning Engineering</span>
+            <span class="item-sub">Module 3: Deep Learning Frameworks (PyTorch & TensorFlow)</span>
           </div>
-
-          <div style="margin-bottom: 20px;">
-            <div class="item-meta">
-              <span class="item-title">AI & Machine Learning Engineering</span>
-              <span class="item-sub">Module 3: Deep Learning Frameworks (PyTorch & TensorFlow)</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-top: 8px;">
-              <span>Progress</span>
-              <span>72%</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 72%;"></div>
-            </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-top: 8px;">
+            <span>Progress</span>
+            <span>72%</span>
           </div>
-
-          <div>
-            <div class="item-meta">
-              <span class="item-title">Full-Stack Web Development</span>
-              <span class="item-sub">Module 2: RESTful API Integration & Node.js Backends</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-top: 8px;">
-              <span>Progress</span>
-              <span>45%</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 45%;"></div>
-            </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 72%;"></div>
           </div>
         </div>
 
-        <!-- Completed Courses -->
-        <div class="section-card">
-          <div class="section-title"> Completed Courses & Textbooks</div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">Machine Learning Specialization</span>
-              <span class="item-sub">Coursera • Stanford University</span>
-            </div>
-            <span class="badge-status badge-success">Completed</span>
+        <div>
+          <div class="item-meta">
+            <span class="item-title">Full-Stack Web Development</span>
+            <span class="item-sub">Module 2: RESTful API Integration & Node.js Backends</span>
           </div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">Introduction to Psychology & Behavioral Science</span>
-              <span class="item-sub">Yale Open Courses</span>
-            </div>
-            <span class="badge-status badge-success">Completed</span>
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-top: 8px;">
+            <span>Progress</span>
+            <span>45%</span>
           </div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">Full Stack Web Development Essentials</span>
-              <span class="item-sub">University of Helsinki</span>
-            </div>
-            <span class="badge-status badge-success">Completed</span>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 45%;"></div>
           </div>
         </div>
-
-        <!-- Portfolio Projects -->
-        <div class="section-card">
-          <div class="section-title"> Real-World Projects Built</div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">Syllabus Question Answering RAG Bot</span>
-              <span class="item-sub">Built using Python, LangChain, and OpenAI API</span>
-            </div>
-            <span class="badge-status badge-progress">Published</span>
-          </div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">Real-Time Document Collaboration Engine</span>
-              <span class="item-sub">Built using Node.js, WebSockets, and React.js</span>
-            </div>
-            <span class="badge-status badge-progress">In Review</span>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Right Column -->
-      <div>
+      <!-- Completed Courses -->
+      <div class="section-card">
+        <div class="section-title"> Completed Courses & Textbooks</div>
 
-        <!-- Certificates Claimed -->
-        <div class="section-card">
-          <div class="section-title"> Certificates Claimed</div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">AWS Certified Machine Learning</span>
-              <span class="item-sub">Amazon Web Services • Verified</span>
-            </div>
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">Machine Learning Specialization</span>
+            <span class="item-sub">Coursera • Stanford University</span>
           </div>
+          <span class="badge-status badge-success">Completed</span>
+        </div>
 
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">TensorFlow Developer Certificate</span>
-              <span class="item-sub">Google Developers</span>
-            </div>
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">Introduction to Psychology & Behavioral Science</span>
+            <span class="item-sub">Yale Open Courses</span>
           </div>
+          <span class="badge-status badge-success">Completed</span>
+        </div>
 
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">Meta Full-Stack Developer Professional</span>
-              <span class="item-sub">Meta Certification</span>
-            </div>
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">Full Stack Web Development Essentials</span>
+            <span class="item-sub">University of Helsinki</span>
+          </div>
+          <span class="badge-status badge-success">Completed</span>
+        </div>
+      </div>
+
+      <!-- Portfolio Projects -->
+      <div class="section-card">
+        <div class="section-title"> Real-World Projects Built</div>
+
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">Syllabus Question Answering RAG Bot</span>
+            <span class="item-sub">Built using Python, LangChain, and OpenAI API</span>
+          </div>
+          <span class="badge-status badge-progress">Published</span>
+        </div>
+
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">Real-Time Document Collaboration Engine</span>
+            <span class="item-sub">Built using Node.js, WebSockets, and React.js</span>
+          </div>
+          <span class="badge-status badge-progress">In Review</span>
+        </div>
+      </div>
+
+      <!-- Certificates Claimed -->
+      <div class="section-card">
+        <div class="section-title"> Certificates Claimed</div>
+
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">AWS Certified Machine Learning</span>
+            <span class="item-sub">Amazon Web Services • Verified</span>
           </div>
         </div>
 
-        <!-- Resources & Materials Saved -->
-        <div class="section-card">
-          <div class="section-title"> Resources Used & Bookmarks</div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">PyTorch Documentation Cheatsheet</span>
-              <span class="item-sub">PDF Guide • Saved 2 days ago</span>
-            </div>
-          </div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">System Design & Architecture Notes</span>
-              <span class="item-sub">Interactive Diagram • Saved 5 days ago</span>
-            </div>
-          </div>
-
-          <div class="list-item">
-            <div class="item-meta">
-              <span class="item-title">VTU Engineering Exam Model Answers</span>
-              <span class="item-sub">Question Bank • Saved 1 week ago</span>
-            </div>
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">TensorFlow Developer Certificate</span>
+            <span class="item-sub">Google Developers</span>
           </div>
         </div>
 
-       <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduPath AI — Dedicated AI Assistant</title>
-  
-  <!-- CSS Asset Paths from Root -->
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/dashboard.css">
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">Meta Full-Stack Developer Professional</span>
+            <span class="item-sub">Meta Certification</span>
+          </div>
+        </div>
+      </div>
 
-  <style>
-    body {
-      background-color: #0b0f19;
-      color: #fff;
-      font-family: inherit;
-      margin: 0;
-      padding: 0;
-    }
+      <!-- Resources & Materials Saved -->
+      <div class="section-card">
+        <div class="section-title"> Resources Used & Bookmarks</div>
 
-    .ai-workspace-container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      height: 85vh;
-    }
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">PyTorch Documentation Cheatsheet</span>
+            <span class="item-sub">PDF Guide • Saved 2 days ago</span>
+          </div>
+        </div>
 
-    .workspace-header {
-      margin-bottom: 20px;
-    }
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">System Design & Architecture Notes</span>
+            <span class="item-sub">Interactive Diagram • Saved 5 days ago</span>
+          </div>
+        </div>
 
-    .workspace-header h1 {
-      font-size: 1.8rem;
-      margin: 0 0 6px 0;
-      color: #fff;
-    }
+        <div class="list-item">
+          <div class="item-meta">
+            <span class="item-title">VTU Engineering Exam Model Answers</span>
+            <span class="item-sub">Question Bank • Saved 1 week ago</span>
+          </div>
+        </div>
+      </div>
 
-    .workspace-header p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      margin: 0;
-    }
-
-    .ai-chat-box {
-      flex: 1;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .ai-messages-area {
-      flex: 1;
-      padding: 24px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .chat-bubble {
-      max-width: 75%;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .bubble-assistant {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #e2e8f0;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-
-    .bubble-user {
-      background: #6366f1;
-      color: #fff;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-
-    .ai-input-bar {
-      padding: 16px 20px;
-      background: rgba(255, 255, 255, 0.02);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .ai-input-bar input {
-      flex: 1;
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      color: #fff;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .ai-input-bar input:focus {
-      border-color: #6366f1;
-    }
-
-    .ai-input-bar button {
-      padding: 12px 24px;
-      background: #6366f1;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-    }
-
-    .ai-input-bar button:hover {
-      background: #4f46e5;
-    }
-
-    .ai-input-bar button:active {
-      transform: scale(0.98);
-    }
-  </style>
-</head>
-<body>
-
-  <div class="ai-workspace-container">
-    <div class="workspace-header">
-      <h1>AI Assistant</h1>
-      <p>Your high-performance academic and career companion, optimized for instant response.</p>
     </div>
+  </main>
 
-    <div class="ai-chat-box">
-      <div id="aiMessages" class="ai-messages-area">
-        <div class="chat-bubble bubble-assistant">
-          Hello! I am your dedicated EduPath AI assistant. Ask me anything about your study modules, exam preparation guidelines, or technical concepts, and I will generate precise answers instantly.
-        </div>
-      </div>
-
-      <div class="ai-input-bar">
-        <input type="text" id="aiInput" placeholder="Ask Gemini..." autocomplete="off">
-        <button id="aiSendBtn">Send</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript Integration with Core Files -->
-  <script src="../js/roadmap-data.js"></script>
-  <script src="../js/api.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/app.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const inputField = document.getElementById('aiInput');
-      const sendBtn = document.getElementById('aiSendBtn');
-      const messagesContainer = document.getElementById('aiMessages');
-
-      const handleSendMessage = () => {
-        const query = inputField.value.trim();
-        if (!query) return;
-
-        // Append User Message
-        appendMessage(query, 'bubble-user');
-        inputField.value = '';
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-        // Simulate instant high-speed Gemini-like response generation
-        setTimeout(() => {
-          const responseText = generateSmartResponse(query);
-          appendMessage(responseText, 'bubble-assistant');
-          messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }, 350);
-      };
-
-      function appendMessage(text, className) {
-        const bubble = document.createElement('div');
-        bubble.className = `chat-bubble ${className}`;
-        bubble.textContent = text;
-        messagesContainer.appendChild(bubble);
-      }
-
-      function generateSmartResponse(prompt) {
-        const p = prompt.toLowerCase();
-        if (p.includes('exam') || p.includes('mark') || p.includes('question')) {
-          return "For your module examinations, focus on structured headings, clear diagrams, and standard 5-mark and 10-mark breakdown formats. Make sure to review previous assignment outlines.";
-        } else if (p.includes('code') || p.includes('python') || p.includes('programming')) {
-          return "Here is a clean implementation approach: structure your logic into modular functions, handle edge cases securely, and verify input types prior to execution.";
-        } else {
-          return `I've analyzed your query regarding "${prompt}". Based on your learning track, keeping your study schedule organized and practicing module questions will yield the best results. Let me know if you need specific breakdowns!`;
-        }
-      }
-
-      sendBtn.addEventListener('click', handleSendMessage);
-      inputField.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          handleSendMessage();
-        }
-      });
-    });
-  </script>
 </body>
 </html>
