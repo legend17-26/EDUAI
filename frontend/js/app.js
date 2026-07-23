@@ -78,8 +78,15 @@ function renderPills(containerId, fallbackId, itemsArray, categoryLabel) {
 
     // Attach click listener to show modal popup
     chip.addEventListener("click", () => {
-      openDetailModal(itemTitle, itemDesc, categoryLabel);
-    });
+  // If the item has a URL, open it in a new tab
+  if (typeof item === "object" && item.url) {
+    window.open(item.url, "_blank");
+    return;
+  }
+
+  // Otherwise show the details modal
+  openDetailModal(itemTitle, itemDesc, categoryLabel);
+});
 
     container.appendChild(chip);
   });
